@@ -1,5 +1,5 @@
 # pdc-project
 
 ## Installing Dependencies
-* pip install Image
+* pip install numpy
 * pip install scikit-image
