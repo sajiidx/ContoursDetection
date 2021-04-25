@@ -1,9 +1,7 @@
 #include<iostream>
 #include<omp.h>
-
-#define ROW 3
-#define COL 3
 using namespace std;
+
 int*** blur(int*** img, int r, int c, int ch){
     // paramters image matrix(img), no of rows(r), columns(c) and channels(ch)
     int*** blurred;
@@ -56,7 +54,7 @@ int*** blur(int*** img, int r, int c, int ch){
                 }
                 #pragma omp critical
                 {
-                    blurred[i][j][k] = channel/3;
+                    blurred[i][j][k] = channel/ch;
                     channel = 0;
                 }
             }
@@ -75,7 +73,6 @@ int main(){
         {{136, 132, 120}, {136, 132, 120}, {136, 132, 120}}
     };
 
-
     img = new int**[r];
     for(int i=0;i<r;i++){
         img[i] = new int*[c];
@@ -90,10 +87,13 @@ int main(){
     int*** blurred = blur(img, 3, 3, 3);
     for(int i=0;i<r;i++){
         for(int j=0;j<c;j++){
+            cout << "[ ";
             for(int k=0;k<ch;k++){
-                cout << blurred[i][j][j] << "\t";
+                if(k!=0)
+                    cout << "   ";
+                cout << blurred[i][j][j];
             }
-            cout << endl;
+            cout << " ]\t";
         }
         cout << endl;
     }
