@@ -23,6 +23,9 @@ Where, y is the distance along vertical axis from the origin, x is the distance 
 
 ## 2. Covert image to GrayScale
 
+
+The first step to using any Edge Detection Algorithm is to convert the image to grayscale. While it is possible to use the algorithm in standard RGB scale, it is easier to implement in a grayscale.
+
 RGB Image- It is three dimension(channel) image. It contains the red color , Green color and Blue color image in separate matrix. Represented from 8bit to 32bit.
 
 GrayScale Image- It is one dimension (channel) image. It is derived from RGB image. It has the intensity value. Using the below equation to compute the gray scale Image.
