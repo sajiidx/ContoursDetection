@@ -7,16 +7,36 @@ from matplotlib.image import imread
 import warnings
 warnings.filterwarnings('ignore')
 
+from gaussianBlur import GaussianBlur
 from blur import blur
+from grayscale import grayscale
+from sobel import SobelOperator
 
-img = imread("Images/loin.jpg").tolist()
+def read_image(filename):
+    return imread(filename).tolist()
 
-blurred = blur(img)
-blurred = np.array(blurred, dtype=np.uint8)
+def gaussian_blur(image, raduis=3):
+    blurred = GaussianBlur(image, raduis)
+    return np.array(blurred, dtype=np.uint8)
 
-img = Image.fromarray(blurred, 'RGB')
-img.save('Output/blurred_loin.png')
-img.show()
+def to_grayscale(image):
+    gray = grayscale(image)
+    return np.array(gray, dtype=np.uint8)
+
+def write_image(filename, image, format = 'RGB'):
+    img = Image.fromarray(image, format)
+    img.save(filename)
+
+image = read_image('Images/random.jpeg')
+gray_image = to_grayscale(image)
+edges = SobelOperator(gray_image)
+write_image('Output/sobel_random.jpeg', edges, format='L')
+
+# blurred_image = gaussian_blur(image, 5)
+
+# write_image('Output/gray_random.jpeg', gray_image, format='L')
+# write_image('Output/blurred_random.jpeg', blurred_image)
+
 
 # Helping Hand:
 # https://stackoverflow.com/questions/145270/calling-c-c-from-python
