@@ -68,6 +68,7 @@ By using Kernel Convolution, we can see in the example image below there is an e
 This Kernel Convolution is an example of an X Direction Kernel usage. If an image were scanning from left to write, we can see that if the filter was set at (2,2) in the image above, it would have a value of 400 and therefore would have a fairly prominent edge at that point. If a user wanted to exaggerate the edge, then the user would need to change the filter values of -2 and 2 to higher magnitude. Perhaps -5 and 5. This would make the gradient of the edge larger and therefore, more noticeable.
 
 Once the image is processed in the X direction, we can then process the image in the Y direction. Magnitudes of both the X and Y kernels will then be added together to produce a final image showing all edges in the image.
+
     In order to combine both the vertical and horizontal edges (derivatives) we can use the following equation:
 
 <image src="sobel_operator.png"> </image>
