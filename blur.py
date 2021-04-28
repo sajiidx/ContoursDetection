@@ -61,8 +61,387 @@ class _SwigNonDynamicMeta(type):
     __setattr__ = _swig_setattr_nondynamic_class_variable(type.__setattr__)
 
 
+class SwigPyIterator(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
 
-def blur(img, rows, columns, channels):
-    return _blur.blur(img, rows, columns, channels)
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _blur.delete_SwigPyIterator
+
+    def value(self):
+        return _blur.SwigPyIterator_value(self)
+
+    def incr(self, n=1):
+        return _blur.SwigPyIterator_incr(self, n)
+
+    def decr(self, n=1):
+        return _blur.SwigPyIterator_decr(self, n)
+
+    def distance(self, x):
+        return _blur.SwigPyIterator_distance(self, x)
+
+    def equal(self, x):
+        return _blur.SwigPyIterator_equal(self, x)
+
+    def copy(self):
+        return _blur.SwigPyIterator_copy(self)
+
+    def next(self):
+        return _blur.SwigPyIterator_next(self)
+
+    def __next__(self):
+        return _blur.SwigPyIterator___next__(self)
+
+    def previous(self):
+        return _blur.SwigPyIterator_previous(self)
+
+    def advance(self, n):
+        return _blur.SwigPyIterator_advance(self, n)
+
+    def __eq__(self, x):
+        return _blur.SwigPyIterator___eq__(self, x)
+
+    def __ne__(self, x):
+        return _blur.SwigPyIterator___ne__(self, x)
+
+    def __iadd__(self, n):
+        return _blur.SwigPyIterator___iadd__(self, n)
+
+    def __isub__(self, n):
+        return _blur.SwigPyIterator___isub__(self, n)
+
+    def __add__(self, n):
+        return _blur.SwigPyIterator___add__(self, n)
+
+    def __sub__(self, *args):
+        return _blur.SwigPyIterator___sub__(self, *args)
+    def __iter__(self):
+        return self
+
+# Register SwigPyIterator in _blur:
+_blur.SwigPyIterator_swigregister(SwigPyIterator)
+
+class VecDouble(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def iterator(self):
+        return _blur.VecDouble_iterator(self)
+    def __iter__(self):
+        return self.iterator()
+
+    def __nonzero__(self):
+        return _blur.VecDouble___nonzero__(self)
+
+    def __bool__(self):
+        return _blur.VecDouble___bool__(self)
+
+    def __len__(self):
+        return _blur.VecDouble___len__(self)
+
+    def __getslice__(self, i, j):
+        return _blur.VecDouble___getslice__(self, i, j)
+
+    def __setslice__(self, *args):
+        return _blur.VecDouble___setslice__(self, *args)
+
+    def __delslice__(self, i, j):
+        return _blur.VecDouble___delslice__(self, i, j)
+
+    def __delitem__(self, *args):
+        return _blur.VecDouble___delitem__(self, *args)
+
+    def __getitem__(self, *args):
+        return _blur.VecDouble___getitem__(self, *args)
+
+    def __setitem__(self, *args):
+        return _blur.VecDouble___setitem__(self, *args)
+
+    def pop(self):
+        return _blur.VecDouble_pop(self)
+
+    def append(self, x):
+        return _blur.VecDouble_append(self, x)
+
+    def empty(self):
+        return _blur.VecDouble_empty(self)
+
+    def size(self):
+        return _blur.VecDouble_size(self)
+
+    def swap(self, v):
+        return _blur.VecDouble_swap(self, v)
+
+    def begin(self):
+        return _blur.VecDouble_begin(self)
+
+    def end(self):
+        return _blur.VecDouble_end(self)
+
+    def rbegin(self):
+        return _blur.VecDouble_rbegin(self)
+
+    def rend(self):
+        return _blur.VecDouble_rend(self)
+
+    def clear(self):
+        return _blur.VecDouble_clear(self)
+
+    def get_allocator(self):
+        return _blur.VecDouble_get_allocator(self)
+
+    def pop_back(self):
+        return _blur.VecDouble_pop_back(self)
+
+    def erase(self, *args):
+        return _blur.VecDouble_erase(self, *args)
+
+    def __init__(self, *args):
+        _blur.VecDouble_swiginit(self, _blur.new_VecDouble(*args))
+
+    def push_back(self, x):
+        return _blur.VecDouble_push_back(self, x)
+
+    def front(self):
+        return _blur.VecDouble_front(self)
+
+    def back(self):
+        return _blur.VecDouble_back(self)
+
+    def assign(self, n, x):
+        return _blur.VecDouble_assign(self, n, x)
+
+    def resize(self, *args):
+        return _blur.VecDouble_resize(self, *args)
+
+    def insert(self, *args):
+        return _blur.VecDouble_insert(self, *args)
+
+    def reserve(self, n):
+        return _blur.VecDouble_reserve(self, n)
+
+    def capacity(self):
+        return _blur.VecDouble_capacity(self)
+    __swig_destroy__ = _blur.delete_VecDouble
+
+# Register VecDouble in _blur:
+_blur.VecDouble_swigregister(VecDouble)
+
+class VecVecDouble(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def iterator(self):
+        return _blur.VecVecDouble_iterator(self)
+    def __iter__(self):
+        return self.iterator()
+
+    def __nonzero__(self):
+        return _blur.VecVecDouble___nonzero__(self)
+
+    def __bool__(self):
+        return _blur.VecVecDouble___bool__(self)
+
+    def __len__(self):
+        return _blur.VecVecDouble___len__(self)
+
+    def __getslice__(self, i, j):
+        return _blur.VecVecDouble___getslice__(self, i, j)
+
+    def __setslice__(self, *args):
+        return _blur.VecVecDouble___setslice__(self, *args)
+
+    def __delslice__(self, i, j):
+        return _blur.VecVecDouble___delslice__(self, i, j)
+
+    def __delitem__(self, *args):
+        return _blur.VecVecDouble___delitem__(self, *args)
+
+    def __getitem__(self, *args):
+        return _blur.VecVecDouble___getitem__(self, *args)
+
+    def __setitem__(self, *args):
+        return _blur.VecVecDouble___setitem__(self, *args)
+
+    def pop(self):
+        return _blur.VecVecDouble_pop(self)
+
+    def append(self, x):
+        return _blur.VecVecDouble_append(self, x)
+
+    def empty(self):
+        return _blur.VecVecDouble_empty(self)
+
+    def size(self):
+        return _blur.VecVecDouble_size(self)
+
+    def swap(self, v):
+        return _blur.VecVecDouble_swap(self, v)
+
+    def begin(self):
+        return _blur.VecVecDouble_begin(self)
+
+    def end(self):
+        return _blur.VecVecDouble_end(self)
+
+    def rbegin(self):
+        return _blur.VecVecDouble_rbegin(self)
+
+    def rend(self):
+        return _blur.VecVecDouble_rend(self)
+
+    def clear(self):
+        return _blur.VecVecDouble_clear(self)
+
+    def get_allocator(self):
+        return _blur.VecVecDouble_get_allocator(self)
+
+    def pop_back(self):
+        return _blur.VecVecDouble_pop_back(self)
+
+    def erase(self, *args):
+        return _blur.VecVecDouble_erase(self, *args)
+
+    def __init__(self, *args):
+        _blur.VecVecDouble_swiginit(self, _blur.new_VecVecDouble(*args))
+
+    def push_back(self, x):
+        return _blur.VecVecDouble_push_back(self, x)
+
+    def front(self):
+        return _blur.VecVecDouble_front(self)
+
+    def back(self):
+        return _blur.VecVecDouble_back(self)
+
+    def assign(self, n, x):
+        return _blur.VecVecDouble_assign(self, n, x)
+
+    def resize(self, *args):
+        return _blur.VecVecDouble_resize(self, *args)
+
+    def insert(self, *args):
+        return _blur.VecVecDouble_insert(self, *args)
+
+    def reserve(self, n):
+        return _blur.VecVecDouble_reserve(self, n)
+
+    def capacity(self):
+        return _blur.VecVecDouble_capacity(self)
+    __swig_destroy__ = _blur.delete_VecVecDouble
+
+# Register VecVecDouble in _blur:
+_blur.VecVecDouble_swigregister(VecVecDouble)
+
+class VecVecVecDouble(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def iterator(self):
+        return _blur.VecVecVecDouble_iterator(self)
+    def __iter__(self):
+        return self.iterator()
+
+    def __nonzero__(self):
+        return _blur.VecVecVecDouble___nonzero__(self)
+
+    def __bool__(self):
+        return _blur.VecVecVecDouble___bool__(self)
+
+    def __len__(self):
+        return _blur.VecVecVecDouble___len__(self)
+
+    def __getslice__(self, i, j):
+        return _blur.VecVecVecDouble___getslice__(self, i, j)
+
+    def __setslice__(self, *args):
+        return _blur.VecVecVecDouble___setslice__(self, *args)
+
+    def __delslice__(self, i, j):
+        return _blur.VecVecVecDouble___delslice__(self, i, j)
+
+    def __delitem__(self, *args):
+        return _blur.VecVecVecDouble___delitem__(self, *args)
+
+    def __getitem__(self, *args):
+        return _blur.VecVecVecDouble___getitem__(self, *args)
+
+    def __setitem__(self, *args):
+        return _blur.VecVecVecDouble___setitem__(self, *args)
+
+    def pop(self):
+        return _blur.VecVecVecDouble_pop(self)
+
+    def append(self, x):
+        return _blur.VecVecVecDouble_append(self, x)
+
+    def empty(self):
+        return _blur.VecVecVecDouble_empty(self)
+
+    def size(self):
+        return _blur.VecVecVecDouble_size(self)
+
+    def swap(self, v):
+        return _blur.VecVecVecDouble_swap(self, v)
+
+    def begin(self):
+        return _blur.VecVecVecDouble_begin(self)
+
+    def end(self):
+        return _blur.VecVecVecDouble_end(self)
+
+    def rbegin(self):
+        return _blur.VecVecVecDouble_rbegin(self)
+
+    def rend(self):
+        return _blur.VecVecVecDouble_rend(self)
+
+    def clear(self):
+        return _blur.VecVecVecDouble_clear(self)
+
+    def get_allocator(self):
+        return _blur.VecVecVecDouble_get_allocator(self)
+
+    def pop_back(self):
+        return _blur.VecVecVecDouble_pop_back(self)
+
+    def erase(self, *args):
+        return _blur.VecVecVecDouble_erase(self, *args)
+
+    def __init__(self, *args):
+        _blur.VecVecVecDouble_swiginit(self, _blur.new_VecVecVecDouble(*args))
+
+    def push_back(self, x):
+        return _blur.VecVecVecDouble_push_back(self, x)
+
+    def front(self):
+        return _blur.VecVecVecDouble_front(self)
+
+    def back(self):
+        return _blur.VecVecVecDouble_back(self)
+
+    def assign(self, n, x):
+        return _blur.VecVecVecDouble_assign(self, n, x)
+
+    def resize(self, *args):
+        return _blur.VecVecVecDouble_resize(self, *args)
+
+    def insert(self, *args):
+        return _blur.VecVecVecDouble_insert(self, *args)
+
+    def reserve(self, n):
+        return _blur.VecVecVecDouble_reserve(self, n)
+
+    def capacity(self):
+        return _blur.VecVecVecDouble_capacity(self)
+    __swig_destroy__ = _blur.delete_VecVecVecDouble
+
+# Register VecVecVecDouble in _blur:
+_blur.VecVecVecDouble_swigregister(VecVecVecDouble)
+
+
+def blur(img):
+    return _blur.blur(img)
 
 

@@ -1,6 +1,8 @@
 #ifndef _blurr
 #define _blurr
 
-int*** blur(int*** img, int rows, int columns, int channels);
+#include<vector>
+
+std::vector< std::vector< std::vector<double> > > blur(std::vector< std::vector< std::vector<double> > > img);
 
 #endif
