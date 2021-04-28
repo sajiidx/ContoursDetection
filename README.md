@@ -8,4 +8,4 @@ RGB Image- It is three dimension(channel) image. It contains the red color , Gre
 
 GrayScale Image- It is one dimension (channel) image. It is derived from RGB image. It has the intensity value. Using the below equation to compute the gray scale Image.
 
-<image src='/home/ashr/Desktop/project/pdc-project/README.md'> </image>
+<image src='./grayscale.png'> </image>
