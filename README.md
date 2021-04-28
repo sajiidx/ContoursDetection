@@ -41,13 +41,14 @@ Sobel edge detection is one of the foundational building block of Computer Visio
 
 ## How to detect an edge?
 
-    In order to detect edge we need to detect the discontinuities in image and we know that we can use derivative to detect discontinuities.
+    In order to detect edge we need to detect the discontinuities in image
+    and we know that we can use derivative to detect discontinuities.
 
 <image src="how-to-detect-edge.webp"> </image>
 
-    As you are seeing in the above picture, the edges corresponds to the derivatives. Since images are discrete in nature, we can easily take the derivate of an image using 2D derivative mask.
+As you are seeing in the above picture, the edges corresponds to the derivatives. Since images are discrete in nature, we can easily take the derivate of an image using 2D derivative mask.
 
-    However derivates are also effected by noise, hence it’s advisable to smooth the image first before taking the derivative. Then we can use the convolution using the mask to detect the edges.
+However derivates are also effected by noise, hence it’s advisable to smooth the image first before taking the derivative. Then we can use the convolution using the mask to detect the edges.
 
 
 ## Limitation in Sobel Edge Detection Technique:
