@@ -19,7 +19,7 @@ Gaussian Blurring:Gaussian blur is the result of blurring an image by a Gaussian
 
 Gaussian Filtering is widely used in the field of image processing. It is used to reduce the noise of an image. In this article we will generate a 2D Gaussian Kernel. The 2D Gaussian Kernel follows the below given Gaussian Distribution.
 
-<image src='./gaussian.svg'> </image>
+<image src='./gaussian.png'> </image>
 
 Where, y is the distance along vertical axis from the origin, x is the distance along horizontal axis from the origin and σ is the standard deviation.
 
