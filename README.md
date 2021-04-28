@@ -51,6 +51,24 @@ As you are seeing in the above picture, the edges corresponds to the derivatives
 
 However derivates are also effected by noise, hence it’s advisable to smooth the image first before taking the derivative. Then we can use the convolution using the mask to detect the edges.
 
+### The Math Behind the Algorithm
+
+When using Sobel Edge Detection, the image is processed in the X and Y directions separately first, and then combined together to form a new image which represents the sum of the X and Y edges of the image. However, these images can be processed separately as well. This will be covered later in this document.
+
+When using a Sobel Edge Detector, it is first best to convert the image from an RGB scale to a Grayscale image. Then from there, we will use what is called kernel convolution. A kernel is a 3 x 3 matrix consisting of differently (or symmetrically) weighted indexes. This will represent the filter that we will be implementing for an edge detection.
+
+When we want to scan across the X direction of an image for example, we will want to use the following X Direction Kernel to scan for large changes in the gradient. Similarly, when we want to scan across the Y direction of an image, we could also use the following Y Direction Kernel to scan for large gradients as well.
+
+<image src="XY-Kernels.png"> </image>
+
+By using Kernel Convolution, we can see in the example image below there is an edge between the column of 100 and 200 values.
+
+<image src="Kernelconvolution.png"> </image>
+
+This Kernel Convolution is an example of an X Direction Kernel usage. If an image were scanning from left to write, we can see that if the filter was set at (2,2) in the image above, it would have a value of 400 and therefore would have a fairly prominent edge at that point. If a user wanted to exaggerate the edge, then the user would need to change the filter values of -2 and 2 to higher magnitude. Perhaps -5 and 5. This would make the gradient of the edge larger and therefore, more noticeable.
+
+Once the image is processed in the X direction, we can then process the image in the Y direction. Magnitudes of both the X and Y kernels will then be added together to produce a final image showing all edges in the image.
+
 
 ### Limitation in Sobel Edge Detection Technique:
 
