@@ -21,7 +21,6 @@ Gaussian Filtering is widely used in the field of image processing. It is used t
 
 <image src='./gaussian.svg'> </image>
 
-G(x, y)=\frac{1}{2\pi \sigma ^{2}}e^{-\frac{x^{2}+y^{2}}{2\sigma ^{2}}}
 Where, y is the distance along vertical axis from the origin, x is the distance along horizontal axis from the origin and σ is the standard deviation.
 
 ### 2. Covert image to GrayScale
