@@ -1,4 +1,4 @@
-# Parallel & Distrubited Computing (PDC) Semester Project
+# Parallel & Distributed Computing (PDC) Semester Project
 
 ## Installing Dependencies
 
