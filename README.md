@@ -59,7 +59,7 @@ When using a Sobel Edge Detector, it is first best to convert the image from an 
 
 When we want to scan across the X direction of an image for example, we will want to use the following X Direction Kernel to scan for large changes in the gradient. Similarly, when we want to scan across the Y direction of an image, we could also use the following Y Direction Kernel to scan for large gradients as well.
 
-<image src="XY-Kernels.png"> </image>
+<image src="XY_Kernels.png"> </image>
 
 By using Kernel Convolution, we can see in the example image below there is an edge between the column of 100 and 200 values.
 
