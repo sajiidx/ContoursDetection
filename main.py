@@ -29,7 +29,8 @@ def write_image(filename, image, format = 'RGB'):
 
 image = read_image('Images/random.jpeg')
 gray_image = to_grayscale(image)
-edges = SobelOperator(gray_image)
+edges = SobelOperator(gray_image.tolist())
+edges = np.array(edges, dtype=np.uint8)
 write_image('Output/sobel_random.jpeg', edges, format='L')
 
 # blurred_image = gaussian_blur(image, 5)
