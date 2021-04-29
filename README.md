@@ -85,3 +85,35 @@ Next we will implement Canny edge detector where we will overcome theses issues.
 
 ## 4. Canny Edge Detection
 
+One last important thing to mention, is that the algorithm is based on grayscale pictures. Therefore, the pre-requisite is to convert the image to grayscale before following the above-mentioned steps.
+
+The Canny edge detection algorithm is composed of 5 steps:
+
+### 1. Noise reduction;
+
+Since the mathematics involved behind the scene are mainly based on derivatives (cf. Step 2: Gradient calculation), edge detection results are highly sensitive to image noise.
+
+One way to get rid of the noise on the image, is by applying Gaussian blur to smooth it. To do so, image convolution technique is applied with a Gaussian Kernel (3x3, 5x5, 7x7 etc…). The kernel size depends on the expected blurring effect. Basically, the smallest the kernel, the less visible is the blur. In our example, we will use a 5 by 5 Gaussian kernel.
+
+The equation for a Gaussian filter kernel of size (2k+1)×(2k+1) is given by:
+
+<image src="noice.png"> </image>
+
+### 2. Gradient calculation;
+
+The Gradient calculation step detects the edge intensity and direction by calculating the gradient of the image using edge detection operators.
+
+Edges correspond to a change of pixels’ intensity. To detect it, the easiest way is to apply filters that highlight this intensity change in both directions: horizontal (x) and vertical (y)
+
+When the image is smoothed, the derivatives Ix and Iy w.r.t. x and y are calculated. It can be implemented by convolving I with Sobel kernels Kx and Ky, respectively:
+
+<image src="sobel_filter.png"> </image>
+    Sobel filters for both direction (horizontal and vertical)
+
+Then, the magnitude G and the slope θ of the gradient are calculated as follow
+<image src="Gradient-intensity .png"> </image>
+    Gradient intensity 
+
+### 3. Non-maximum suppression;
+### 4. Double threshold;
+### 5. Edge Tracking by Hysteresis.

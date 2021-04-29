@@ -15,23 +15,23 @@ from sobel import SobelOperator
 def read_image(filename):
     return imread(filename).tolist()
 
-def gaussian_blur(image, raduis=3):
-    blurred = GaussianBlur(image, raduis)
-    return np.array(blurred, dtype=np.uint8)
-
-def to_grayscale(image):
-    gray = grayscale(image)
-    return np.array(gray, dtype=np.uint8)
-
 def write_image(filename, image, format = 'RGB'):
     img = Image.fromarray(image, format)
     img.save(filename)
 
-image = read_image('Images/random.jpeg')
-gray_image = to_grayscale(image)
-edges = SobelOperator(gray_image.tolist())
+# Reading Image
+image = read_image('Images/cat.jpg')
+# Removing Noice by applying Gaussian Blur
+blurred = GaussianBlur(image, 3)
+blurred = np.array(blurred, dtype=np.uint8).tolist()
+# Converting RGB to GrayScale Image
+gray_image = grayscale(blurred)
+gray_image = np.array(gray_image, dtype=np.uint8).tolist()
+# Performing Sobel Operator to Detect Edges
+edges = SobelOperator(gray_image)
 edges = np.array(edges, dtype=np.uint8)
-write_image('Output/sobel_random.jpeg', edges, format='L')
+# Writing Image
+write_image('Output/sobel_cat.jpg', edges, format='L')
 
 # blurred_image = gaussian_blur(image, 5)
 
