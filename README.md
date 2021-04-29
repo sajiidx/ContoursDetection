@@ -108,11 +108,14 @@ Edges correspond to a change of pixels’ intensity. To detect it, the easiest w
 When the image is smoothed, the derivatives Ix and Iy w.r.t. x and y are calculated. It can be implemented by convolving I with Sobel kernels Kx and Ky, respectively:
 
 <image src="sobel_filter.png"> </image>
-    Sobel filters for both direction (horizontal and vertical)
+
+Sobel filters for both direction (horizontal and vertical)
 
 Then, the magnitude G and the slope θ of the gradient are calculated as follow
+
 <image src="Gradient-intensity .png"> </image>
-    Gradient intensity 
+
+Gradient intensity 
 
 ### 3. Non-maximum suppression;
 ### 4. Double threshold;
