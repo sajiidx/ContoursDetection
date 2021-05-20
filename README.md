@@ -125,7 +125,7 @@ The principle is simple: the algorithm goes through all the points on the gradie
 
 Let’s take an easy example:
 
-<image src=""> </image>
+<image src="a1.png"> </image>
 
 Ideally, the final image should have thin edges. Thus, we must perform non-maximum suppression to thin out the edges.
 
@@ -133,13 +133,13 @@ The principle is simple: the algorithm goes through all the points on the gradie
 
 Let’s take an easy example:
 
-<image src=""> </image>
+<image src="a2.png"> </image>
 
 The edge direction is the orange dotted line (horizontal from left to right). The purpose of the algorithm is to check if the pixels on the same direction are more or less intense than the ones being processed. In the example above, the pixel (i, j) is being processed, and the pixels on the same direction are highlighted in blue (i, j-1) and (i, j+1). If one those two pixels are more intense than the one being processed, then only the more intense one is kept. Pixel (i, j-1) seems to be more intense, because it is white (value of 255). Hence, the intensity value of the current pixel (i, j) is set to 0. If there are no pixels in the edge direction having more intense values, then the value of the current pixel is kept.
 
 Let’s now focus on another example:
 
-<image src=""> </image>
+<image src="a3.png"> </image>
 
 In this case the direction is the orange dotted diagonal line. Therefore, the most intense pixel in this direction is the pixel (i-1, j+1).
 
