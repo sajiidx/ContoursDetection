@@ -165,3 +165,7 @@ Now you can see what the double thresholds holds for:
 * All pixels having intensity between both thresholds are flagged as weak and the Hysteresis mechanism (next step) will help us identify the ones that could be considered as strong and the ones that are considered as non-relevant.
 
 ### 5. Edge Tracking by Hysteresis.
+
+Based on the threshold results, the hysteresis consists of transforming weak pixels into strong ones, if and only if at least one of the pixels around the one being processed is a strong one, as described below:
+
+<image src="a5.png"> </image>

@@ -53,6 +53,43 @@ def non_max_suppression(img, D):
     
     return Z
 
+def threshold(img, lowThresholdRatio=0.05, highThresholdRatio=0.09):
+    
+    highThreshold = img.max() * highThresholdRatio;
+    lowThreshold = highThreshold * lowThresholdRatio;
+    
+    M, N = img.shape
+    res = np.zeros((M,N), dtype=np.int32)
+    
+    weak = np.int32(25)
+    strong = np.int32(255)
+    
+    strong_i, strong_j = np.where(img >= highThreshold)
+    zeros_i, zeros_j = np.where(img < lowThreshold)
+    
+    weak_i, weak_j = np.where((img <= highThreshold) & (img >= lowThreshold))
+    
+    res[strong_i, strong_j] = strong
+    res[weak_i, weak_j] = weak
+    
+    return (res, weak, strong)
+
+def hysteresis(img, weak, strong=255):
+    M, N = img.shape  
+    for i in range(1, M-1):
+        for j in range(1, N-1):
+            if (img[i,j] == weak):
+                try:
+                    if ((img[i+1, j-1] == strong) or (img[i+1, j] == strong) or (img[i+1, j+1] == strong)
+                        or (img[i, j-1] == strong) or (img[i, j+1] == strong)
+                        or (img[i-1, j-1] == strong) or (img[i-1, j] == strong) or (img[i-1, j+1] == strong)):
+                        img[i, j] = strong
+                    else:
+                        img[i, j] = 0
+                except IndexError as e:
+                    pass
+    return img
+
 def read_image(filename):
     return imread(filename).tolist()
 
@@ -82,9 +119,21 @@ theta = np.array(theta, dtype=np.uint8)
 # Performing Non Maximum Suppression to thin out the edges.
 non_max = non_max_suppression(gradient, theta)
 non_max = np.array(non_max, dtype=np.uint8)
+
+# Double Threshold
+res, weak, strong = threshold(non_max)
+res = np.array(res, dtype=np.uint8)
+
+# Edge Tracking by Hysteresis
+edge = hysteresis(res, weak=weak, strong=strong)
+edge = np.array(edge, dtype=np.uint8)
+
+
 # Writing Image
 write_image('Output/gradient_cat.jpg', gradient, format='L')
 write_image('Output/theta_cat.jpg', theta, format='L')
 write_image('Output/gradientNtheta_cat.jpg', sobel, format='L')
 write_image('Output/nonmax_cat.jpg', non_max, format='L')
+write_image('Output/doubleThreshold_cat.jpg', res, format='L')
+write_image('Output/Hysteresis_cat.jpg', edge, format='L')
 # end
