@@ -151,4 +151,17 @@ Let’s sum this up. Each pixel has 2 main criteria (edge direction in radians, 
 * Return the image processed with the non-max suppression algorithm.
 
 ### 4. Double threshold;
+
+The double threshold step aims at identifying 3 kinds of pixels: strong, weak, and non-relevant:
+
+* Strong pixels are pixels that have an intensity so high that we are sure they contribute to the final edge.
+* Weak pixels are pixels that have an intensity value that is not enough to be considered as strong ones, but yet not small enough to be considered as non-relevant for the edge detection.
+* Other pixels are considered as non-relevant for the edge.
+
+Now you can see what the double thresholds holds for:
+
+* High threshold is used to identify the strong pixels (intensity higher than the high threshold)
+* Low threshold is used to identify the non-relevant pixels (intensity lower than the low threshold)
+* All pixels having intensity between both thresholds are flagged as weak and the Hysteresis mechanism (next step) will help us identify the ones that could be considered as strong and the ones that are considered as non-relevant.
+
 ### 5. Edge Tracking by Hysteresis.

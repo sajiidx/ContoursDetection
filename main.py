@@ -1,7 +1,7 @@
 import numpy as np
 import copy as cp
 import numpy as np
-from ctypes import cdll
+
 from PIL import Image
 from matplotlib.image import imread
 
@@ -87,3 +87,4 @@ write_image('Output/gradient_cat.jpg', gradient, format='L')
 write_image('Output/theta_cat.jpg', theta, format='L')
 write_image('Output/gradientNtheta_cat.jpg', sobel, format='L')
 write_image('Output/nonmax_cat.jpg', non_max, format='L')
+# end
