@@ -1,3 +1,4 @@
+import numpy as np
 import copy as cp
 import numpy as np
 from ctypes import cdll
@@ -11,6 +12,46 @@ from gaussianBlur import GaussianBlur
 from blur import blur
 from grayscale import grayscale
 from sobel import SobelOperator
+
+def non_max_suppression(img, D):
+    M, N = img.shape
+    Z = np.zeros((M,N), dtype=np.int32)
+    angle = D * 180. / np.pi
+    angle[angle < 0] += 180
+
+    
+    for i in range(1,M-1):
+        for j in range(1,N-1):
+            try:
+                q = 255
+                r = 255
+                
+               #angle 0
+                if (0 <= angle[i,j] < 22.5) or (157.5 <= angle[i,j] <= 180):
+                    q = img[i, j+1]
+                    r = img[i, j-1]
+                #angle 45
+                elif (22.5 <= angle[i,j] < 67.5):
+                    q = img[i+1, j-1]
+                    r = img[i-1, j+1]
+                #angle 90
+                elif (67.5 <= angle[i,j] < 112.5):
+                    q = img[i+1, j]
+                    r = img[i-1, j]
+                #angle 135
+                elif (112.5 <= angle[i,j] < 157.5):
+                    q = img[i-1, j-1]
+                    r = img[i+1, j+1]
+
+                if (img[i,j] >= q) and (img[i,j] >= r):
+                    Z[i,j] = img[i,j]
+                else:
+                    Z[i,j] = 0
+
+            except IndexError as e:
+                pass
+    
+    return Z
 
 def read_image(filename):
     return imread(filename).tolist()
@@ -28,27 +69,21 @@ blurred = np.array(blurred, dtype=np.uint8).tolist()
 gray_image = grayscale(blurred)
 gray_image = np.array(gray_image, dtype=np.uint8).tolist()
 # Performing Sobel Operator to Detect Edges
-edges = SobelOperator(gray_image)
-edges = np.array(edges, dtype=np.uint8)
+sobel = SobelOperator(gray_image)
+sobel = np.array(sobel, dtype=np.uint8)
+
+ys,xs = len(image), len(image[0])
+#separating gradient and theta
+gradient = sobel[:ys, :]
+theta = sobel[ys:, :]
+
+gradient = np.array(gradient, dtype=np.uint8)
+theta = np.array(theta, dtype=np.uint8)
+# Performing Non Maximum Suppression to thin out the edges.
+non_max = non_max_suppression(gradient, theta)
+non_max = np.array(non_max, dtype=np.uint8)
 # Writing Image
-write_image('Output/sobel_cat.jpg', edges, format='L')
-
-# blurred_image = gaussian_blur(image, 5)
-
-# write_image('Output/gray_random.jpeg', gray_image, format='L')
-# write_image('Output/blurred_random.jpeg', blurred_image)
-
-
-# Helping Hand:
-# https://stackoverflow.com/questions/145270/calling-c-c-from-python
-
-# Commands:
-# g++ -c -fPIC blur.cpp
-# swig -c++ -python blur.i
-# g++ -c -fPIC blur_wrap.cxx  -I/usr/include/python3.9 -I/usr/lib/python3.9
-# g++ -shared -Wl,-soname,_blur.so -o _blur.so blur.o blur_wrap.o
-
-# Cover Input:
-# img = [[[135, 131, 119], [135, 131, 119], [135, 131, 119]],
-# [[112, 109,  94], [111, 108,  93], [111, 108,  93]],
-# [[136, 132, 120], [136, 132, 120], [136, 132, 120]]]
+write_image('Output/gradient_cat.jpg', gradient, format='L')
+write_image('Output/theta_cat.jpg', theta, format='L')
+write_image('Output/gradientNtheta_cat.jpg', sobel, format='L')
+write_image('Output/nonmax_cat.jpg', non_max, format='L')

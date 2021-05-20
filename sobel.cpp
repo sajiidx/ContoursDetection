@@ -6,7 +6,6 @@
 using namespace std;
 
 vector<vector<double> > SobelOperator(vector<vector<double> > img){
-    cout << "Hello, World!\n";
     int radius = 1;
     vector<vector<double> > G = img;
     
@@ -15,6 +14,7 @@ vector<vector<double> > SobelOperator(vector<vector<double> > img){
 
     vector<vector<double> > Gx = img;
     vector<vector<double> > Gy = img;
+    vector<vector<double> > theta = img;
     
     #pragma omp parallel for
     for(int i=0;i<img.size();i++){
@@ -40,9 +40,14 @@ vector<vector<double> > SobelOperator(vector<vector<double> > img){
                 Gx[i][j] = gx;
                 Gy[i][j] = gy;
                 G[i][j] = sqrt( (Gx[i][j]*Gx[i][j]) + (Gy[i][j]*Gy[i][j]));
+                theta[i][j] = atan2(Gy[i][j], Gx[i][j]);
                 gx = gy = 0;
+                
             }
         }
+    }
+    for(int i=0;i<theta.size();i++){
+        G.push_back(theta[i]);
     }
     return G;
 }

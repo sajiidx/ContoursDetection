@@ -118,5 +118,37 @@ Then, the magnitude G and the slope θ of the gradient are calculated as follow
 Gradient intensity 
 
 ### 3. Non-maximum suppression;
+
+Ideally, the final image should have thin edges. Thus, we must perform non-maximum suppression to thin out the edges.
+
+The principle is simple: the algorithm goes through all the points on the gradient intensity matrix and finds the pixels with the maximum value in the edge directions.
+
+Let’s take an easy example:
+
+<image src=""> </image>
+
+Ideally, the final image should have thin edges. Thus, we must perform non-maximum suppression to thin out the edges.
+
+The principle is simple: the algorithm goes through all the points on the gradient intensity matrix and finds the pixels with the maximum value in the edge directions.
+
+Let’s take an easy example:
+
+<image src=""> </image>
+
+The edge direction is the orange dotted line (horizontal from left to right). The purpose of the algorithm is to check if the pixels on the same direction are more or less intense than the ones being processed. In the example above, the pixel (i, j) is being processed, and the pixels on the same direction are highlighted in blue (i, j-1) and (i, j+1). If one those two pixels are more intense than the one being processed, then only the more intense one is kept. Pixel (i, j-1) seems to be more intense, because it is white (value of 255). Hence, the intensity value of the current pixel (i, j) is set to 0. If there are no pixels in the edge direction having more intense values, then the value of the current pixel is kept.
+
+Let’s now focus on another example:
+
+<image src=""> </image>
+
+In this case the direction is the orange dotted diagonal line. Therefore, the most intense pixel in this direction is the pixel (i-1, j+1).
+
+Let’s sum this up. Each pixel has 2 main criteria (edge direction in radians, and pixel intensity (between 0–255)). Based on these inputs the non-max-suppression steps are:
+
+* Create a matrix initialized to 0 of the same size of the original gradient intensity matrix;
+* Identify the edge direction based on the angle value from the angle matrix;
+* Check if the pixel in the same direction has a higher intensity than the pixel that is currently processed;
+* Return the image processed with the non-max suppression algorithm.
+
 ### 4. Double threshold;
 ### 5. Edge Tracking by Hysteresis.
