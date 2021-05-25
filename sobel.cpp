@@ -2,10 +2,11 @@
 #include<vector>
 #include<cmath>
 #include<iomanip>
-
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<vector<double> > SobelOperator(vector<vector<double> > img){
+    time_t start, end;
     int radius = 1;
     vector<vector<double> > G = img;
     
@@ -15,7 +16,7 @@ vector<vector<double> > SobelOperator(vector<vector<double> > img){
     vector<vector<double> > Gx = img;
     vector<vector<double> > Gy = img;
     vector<vector<double> > theta = img;
-    
+    time(&start);
     #pragma omp parallel for
     for(int i=0;i<img.size();i++){
         double gx = 0;
@@ -46,6 +47,10 @@ vector<vector<double> > SobelOperator(vector<vector<double> > img){
             }
         }
     }
+    time(&end);
+    double time_taken = double(end - start);
+    cout << "Time taken by Sobel Operator : " << time_taken << setprecision(20);
+    cout << " sec " << endl;
     for(int i=0;i<theta.size();i++){
         G.push_back(theta[i]);
     }

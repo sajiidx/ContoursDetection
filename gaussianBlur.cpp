@@ -3,6 +3,7 @@
 #include<vector>
 #include<cmath>
 #include<iomanip>
+#include <bits/stdc++.h>
 using namespace std;
 typedef vector<vector<double> > vec2d;
 typedef vector<vector<vector<double> > > vec3d;
@@ -39,11 +40,13 @@ double** FilterCreation(int radius){
     return (double**) GKernel;
 }
 vec3d GaussianBlur(vec3d image, int radius = 1){
+    time_t start, end;
     int rows = image.size();
     int columns = image[0].size();
     int channels = image[0][0].size();
     vector< vector< vector<double> > >  blurred = image;
     double** GKernel = FilterCreation(radius);
+    time(&start);
     #pragma omp parallel for
     for(int i=0;i<rows;i++){    //iterating each row
 
@@ -73,6 +76,10 @@ vec3d GaussianBlur(vec3d image, int radius = 1){
             }
         }
     }
+    time(&end);
+    double time_taken = double(end - start);
+    cout << "Time taken by Gaussian Blur : " << time_taken << setprecision(20);
+    cout << " sec " << endl;
     return blurred;
 }
 extern "C"{

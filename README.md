@@ -8,6 +8,14 @@
 * pip install opencv-python
 * pip install matplotlib
 
+## How to Run?
+
+    sudo chmod 777 compile.sh
+
+    ./compile.sh
+
+    python3 -u main.py
+
 
 # Object Detection
 
@@ -169,3 +177,9 @@ Now you can see what the double thresholds holds for:
 Based on the threshold results, the hysteresis consists of transforming weak pixels into strong ones, if and only if at least one of the pixels around the one being processed is a strong one, as described below:
 
 <image src="a5.png"> </image>
+
+
+
+# Execution Time
+
+<image src="result.png"> </image>

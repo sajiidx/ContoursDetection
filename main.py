@@ -13,6 +13,8 @@ from blur import blur
 from grayscale import grayscale
 from sobel import SobelOperator
 
+import time
+
 def non_max_suppression(img, D):
     M, N = img.shape
     Z = np.zeros((M,N), dtype=np.int32)
@@ -100,12 +102,15 @@ def write_image(filename, image, format = 'RGB'):
 # Reading Image
 image = read_image('Images/cat.jpg')
 # Removing Noice by applying Gaussian Blur
+print('(Parallel)',end=" ")
 blurred = GaussianBlur(image, 3)
 blurred = np.array(blurred, dtype=np.uint8).tolist()
 # Converting RGB to GrayScale Image
+print('(Parallel)',end=" ")
 gray_image = grayscale(blurred)
 gray_image = np.array(gray_image, dtype=np.uint8).tolist()
 # Performing Sobel Operator to Detect Edges
+print('(Parallel)',end=" ")
 sobel = SobelOperator(gray_image)
 sobel = np.array(sobel, dtype=np.uint8)
 
@@ -117,15 +122,21 @@ theta = sobel[ys:, :]
 gradient = np.array(gradient, dtype=np.uint8)
 theta = np.array(theta, dtype=np.uint8)
 # Performing Non Maximum Suppression to thin out the edges.
+start_time = time.time()
 non_max = non_max_suppression(gradient, theta)
+print('(Serial) Time Taken by Non-Maximum Suppression : ', time.time() - start_time, 'sec')
 non_max = np.array(non_max, dtype=np.uint8)
 
 # Double Threshold
+start_time = time.time()
 res, weak, strong = threshold(non_max)
+print('(Serial) Time Taken by Double Threshold : ', time.time() - start_time, 'sec')
 res = np.array(res, dtype=np.uint8)
 
 # Edge Tracking by Hysteresis
+start_time = time.time()
 edge = hysteresis(res, weak=weak, strong=strong)
+print('(Serial) Time Taken by Double Hysteresis: ', time.time() - start_time, 'sec')
 edge = np.array(edge, dtype=np.uint8)
 
 

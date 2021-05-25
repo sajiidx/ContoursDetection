@@ -3,10 +3,12 @@
 #include<vector>
 #include <cmath>
 #include <iomanip>
+#include <bits/stdc++.h>
 using namespace std;
 
 
 double** FilterCreation(){
+    
     // intialising standard deviation to 1.0
     double sigma = 1.0;
     double r, s = 2.0 * sigma * sigma;
@@ -38,6 +40,9 @@ double** FilterCreation(){
 }
 
 vector< vector< vector<double> > > blur(vector<vector<vector<double> > > img){
+
+    time_t start, end;
+    
     vector< vector< vector<double> > >  blurred = img;
     int r = img.size();
     int c = img[0].size();
@@ -50,6 +55,8 @@ vector< vector< vector<double> > > blur(vector<vector<vector<double> > > img){
         }
         cout << endl;
     }
+
+    time(&start);
 
     #pragma omp parallel for
     for(int i=0;i < img.size(); i++){
@@ -96,6 +103,11 @@ vector< vector< vector<double> > > blur(vector<vector<vector<double> > > img){
             }
         }
     }
+    time(&end);
+    double time_taken = double(end - start);
+    cout << "Time taken by Gaussian Blur : " << fixed << time_taken << setprecision(5);
+    cout << " sec " << endl;
+    
     return blurred;
 }
 extern "C"{
