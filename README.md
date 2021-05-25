@@ -1,4 +1,4 @@
-# Parallel & Distributed Computing (PDC) Semester Project
+#  Contours Detection in Image (using C++ & Python) Parallel & Distributed Computing (PDC) Semester Project.
 
 ## Installing Dependencies
 
