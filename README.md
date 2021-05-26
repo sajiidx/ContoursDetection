@@ -10,6 +10,8 @@
 
 ## How to Run?
 
+    sudo apt-get install swig
+
     sudo chmod 777 compile.sh
 
     ./compile.sh
